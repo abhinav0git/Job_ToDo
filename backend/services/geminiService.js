@@ -15,7 +15,17 @@ const model = genAI.getGenerativeModel({
 });
 
 exports.analyzeImageWithGemini = async (imagePart) => {
-  const prompt = `Extract the following information from the given text, separated by semicolons (;). The order of information should be: Recipient Email; Role; Onsite/Offsite; Job Description; Years of Experience; Company Name; Tech Requirements; OtherInfo. If any field is not found, leave it blank but preserve all semicolons as placeholders for that field. For example, if Role is not found, it should be like: email@example.com;;Onsite;...`;
+  const prompt = `Analyze the provided job posting image. Extract only the essential information for a job applicant to create a concise to-do list for applying. The output should be highly scannable and actionable.
+Focus on:
+Hiring Company:
+Job Role(s) & Experience (if brief and clear): (e.g., SDE 1 (1-3 yrs), SDE Intern)
+Primary Application Action(s): (List these as actionable steps)
+If an application/JD link exists: Action: Apply via Link: [URL]
+If email application is an option: Action: Email [Email Address] with Subject: "[Specific Subject, if any]" (Mention resume if implied/stated)
+If direct message/referral contact is primary: Action: Contact [Person's Name/Profile] via [Platform, e.g., LinkedIn DM] for [Role] referral. (Mention sending resume)
+Key Contact for Application (if applicable for email/DM): (e.g., Pracheta Das)
+Location (briefly, if on-site): (e.g., HSR Layout, Bangalore)
+If information for a specific action (e.g., subject line) is missing, note it as 'Subject: (not specified)' or similar. Omit other descriptive text, reasons for hiring, or general hashtags unless they are part of an actionable instruction (like a specific hashtag for a referral). Prioritize direct application methods.`;
 
   try {
     const result = await model.generateContent([prompt, imagePart]);
@@ -27,7 +37,7 @@ exports.analyzeImageWithGemini = async (imagePart) => {
     }
     
     const text = response.text();
-    // console.log("Gemini raw response text:", text); 
+    console.log("Gemini raw response text:", text); 
     return text;
 
   } catch (error) {

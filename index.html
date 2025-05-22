@@ -7,23 +7,43 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>App</title>
+    <title>JTodo App</title>
   </head>
   <body>
     <div id="app">
       <div id="toast-container"></div>
       <div class="container">
         <h1 class="title">Job Application Todo</h1>
-        <p class="sub-title">Create Todos for Job Applications via Screenshot.</p>
+        <p class="sub-title">Create Todos for Job Applications via Screenshot or by typing.</p>
 
-        <form id="uploadForm" class="upload-form">
-            <label for="screenshotFile">
-              Select Screenshot:
+        <div>
+        <form id="uploadForm">
+            <label for="multimodal-input" class="form-label">
+                Paste screenshot or type job details:
             </label>
-            <input type="file" id="screenshotFile" name="screenshot" accept="image/*" required>
-            <button type="submit">Upload</button>
-        </form>
+            <div class="multimodal-input-wrapper">
+                <div id="multimodal-input"
+                     contenteditable="true"
+                     data-placeholder="Paste screenshot or type company, role, requirements..."
+                     role="textbox"
+                     aria-multiline="true">
+                </div>
+                <div class="multimodal-controls-bar">
+                    <button type="button" id="add-image-button" class="mm-btn" title="Add image from file">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                        </svg>
+                    </button>
+                    <input type="file" id="hidden-image-upload" accept="image/*" style="display: none;">
 
+                    <div style="flex-grow: 1;"></div> 
+                    <button type="submit" id="submit-todo-button" class="mm-btn mm-submit-btn">
+                        Create Todo
+                    </button>
+                </div>
+            </div>
+        </form>
+        </div>
         <h2>Current Todos</h2>
         <ul id="todoList">
           <!-- todos will be rendered here -->
