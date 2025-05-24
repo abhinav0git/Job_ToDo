@@ -1,9 +1,11 @@
 import axios from 'axios';
+require('dotenv').config();
 
 const uploadForm = document.getElementById('uploadForm');
 const todoList = document.getElementById('todoList');
 const toastContainer = document.getElementById('toast-container');
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = process.env.API_BACKEND;
+// const API_BASE_URL = 'http://localhost:3000/api';
 
 // --- MULTIMODAL INPUT ELEMENTS ---
 const multimodalInput = document.getElementById('multimodal-input');
