@@ -410,3 +410,4 @@ uploadForm.addEventListener('submit', async (event) => {
 });
 
 document.addEventListener('DOMContentLoaded', fetchTodos);
+console.log("For Learning Purposes Only: This project's backend API is intentionally exposed for your learning. It's a personal API; please refrain from using it in your own projects, as misuse may lead to costs on my end. Happy learning!")
