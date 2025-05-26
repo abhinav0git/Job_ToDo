@@ -493,8 +493,6 @@ form#uploadForm .form-label {
   border: none; outline: none;
   font-size: 0.95em;
   line-height: 1.6;
-  white-space: pre-wrap;
-  word-wrap: break-word;
   overflow-y: auto;
   color: #e0e0e0;
   background-color: transparent;

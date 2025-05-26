@@ -197,7 +197,7 @@ function renderTodos(todos) {
     const textContainer = document.createElement('div');
     textContainer.className = 'todo-text-container';
 
-    const details = todo.text.split(';');
+    // const details = todo.text.split(';');
     const parsedInfo = parseGeminiOutput(todo.text);
 
     const headerWrapper = document.createElement('div');
